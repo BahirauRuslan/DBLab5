@@ -41,6 +41,18 @@ namespace DBLab5
         {
             IEnumerable<string> subjects = DSTableCreator.GetInstance().GetSubjects();
             FillListBox(subjects);
+            AddButton.Enabled = false;
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            if (subjectTextBox.Text != null && subjectTextBox.Text.Length > 1)
+            {
+                DBSubjects.GetInstance().AddSubject(subjectTextBox.Text);
+                ClearButton_Click(this, null);
+                ReadButton_Click(this, null);
+            }
+            subjectTextBox.Text = "";
         }
     }
 }

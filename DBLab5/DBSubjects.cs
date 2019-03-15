@@ -40,5 +40,18 @@ Initial Catalog=EducationalDepartment;Integrated Security=True";
             }
             return subjects;
         }
+
+        public void AddSubject(string subject)
+        {
+            SqlConnection connection = new SqlConnection(CONNECTION_STRING);
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Subjects", connection);
+            DataSet dataSet = new DataSet();
+            adapter.Fill(dataSet, "Subjects");
+            SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+            DataRow row = dataSet.Tables["Subjects"].NewRow();
+            row["Name"] = subject;
+            dataSet.Tables["Subjects"].Rows.Add(row);
+            adapter.Update(dataSet, "Subjects");
+        }
     }
 }
