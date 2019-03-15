@@ -10,11 +10,31 @@ using System.Windows.Forms;
 
 namespace DBLab5
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void ReadButton_Click(object sender, EventArgs e)
+        {
+            IEnumerable<string> subjects = DBSubjects.GetInstance().GetAllSubjects();
+            FillListBox(subjects);
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            mainListBox.Items.Clear();
+            AddButton.Enabled = true;
+        }
+
+        private void FillListBox(IEnumerable<string> list)
+        {
+            foreach (string item in list)
+            {
+                mainListBox.Items.Add(item);
+            }
         }
     }
 }
