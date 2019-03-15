@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DBLab5
@@ -19,6 +13,7 @@ namespace DBLab5
 
         private void ReadButton_Click(object sender, EventArgs e)
         {
+            ClearButton_Click(this, null);
             IEnumerable<string> subjects = DBSubjects.GetInstance().GetAllSubjects();
             FillListBox(subjects);
         }
@@ -39,6 +34,7 @@ namespace DBLab5
 
         private void MagicButton_Click(object sender, EventArgs e)
         {
+            ClearButton_Click(this, null);
             IEnumerable<string> subjects = DSTableCreator.GetInstance().GetSubjects();
             FillListBox(subjects);
             AddButton.Enabled = false;
