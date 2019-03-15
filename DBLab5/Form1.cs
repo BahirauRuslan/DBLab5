@@ -36,5 +36,11 @@ namespace DBLab5
                 mainListBox.Items.Add(item);
             }
         }
+
+        private void MagicButton_Click(object sender, EventArgs e)
+        {
+            IEnumerable<string> subjects = DSTableCreator.GetInstance().GetSubjects();
+            FillListBox(subjects);
+        }
     }
 }

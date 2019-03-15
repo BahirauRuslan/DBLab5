@@ -64,6 +64,7 @@
             this.MagicButton.TabIndex = 2;
             this.MagicButton.Text = "Волшебная кнопочка";
             this.MagicButton.UseVisualStyleBackColor = false;
+            this.MagicButton.Click += new System.EventHandler(this.MagicButton_Click);
             // 
             // ClearButton
             // 
